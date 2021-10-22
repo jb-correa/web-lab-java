@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weblab | inicio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"
+        defer></script>
+    <script src="../static/js/index.js" defer></script>
+    <link rel="stylesheet" href="../static/style/css/style.css" th:href="@{/style/css/style.css}">
+
+</head>
+
+
+<body>
+
+    <section id="inicio" class="container grid" th:if="${#authorization.expression('hasAnyRole(''ROLE_ADMIN'')')}">
+
+        <!-- ///////////////////////// NAV BAR  ////////////////////////////////////////////////-->
+        <header>
+            <div th:insert="fragments/navbar-fr"></div>
+        </header>
+
+        <div class="header">
+            <h2 class="titulo">Bienvenido <span
+                    th:text="${session.usuario.nombre} + ' ' + ${session.usuario.apellido}">Juan Pérez!</span></h2>
+            <form id="buscarPaciente" th:action="@{/login/searcheverything}" method="POST">
+                <input class="form-control form-control--cargaUs" id="buscarPacienteInput" type="text" name="dni"
+                    th:value="${dni}" placeholder="Ingrese DNI, Nombre, Apellido...">
+            </form>
+        </div>
+
+
+        <div class="content">
+            <table class="table  table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">DNI</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Obra Social</th>
+                    </tr>
+                </thead>
+                <tbody id="userTest">
+                    <tr th:each="usuario : ${usuarios}">
+                        <th scope="row" th:text="${usuario.dni}">43974407</th>
+                        <td th:text="${usuario.nombre}">Joaquín</td>
+                        <td th:text="${usuario.apellido}">Viretti</td>
+                        <!--<td th:text= "${usuario.os.nombre}">Swiss Medical</td>-->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+    <!--
+    <section class="container grid--user" >
+
+        <nav class="navbar navbar--user navbar-expand-lg">
+            <div class="container">
+              <a class="navbar-brand" href="#" th:href="@{/}"><img th:src="@{img/logo.png}" src="../static/img/logo.png" alt=""></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                    <div class="btn-group dropstart">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                          Mi cuenta
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="./modificar-user.html" th:href="@{/user/modificar-datos}">Modificar mis datos</a></li>
+                          <li><a class="dropdown-item" href="./index.html" th:href="@{/logout}">Cerrar sesión</a></li>
+                        </ul>
+                      </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+        <div class="header">
+            <h2 class="titulo">Bienvenido <span th:text="${session.usuario.nombre}">Juan Perez!</span></h2>
+        </div>
+
+        <div class="content">
+            <div>
+                <table class="table  table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Prácticas</th>
+                            <th scope="col">Médico solicitante</th>
+                            <th scope="col">Ver informe</th>
+                        </tr>
+                    </thead>
+   <!--                   <tbody>
+                      <tr th:each="anali : ${analisis}">
+                            <td th:text="${anali.fecha}">10/12</td>
+                            <td><span>10029</span> <span>5494</span> <span>5494</span> <span>598494</span> <span>129</span> <span>5994</span> <span>5494</span> <span>5494</span></td>
+                            <td th:text="${anali.medico}">Cardiologo Fabrizio Juarez</td>
+                            <td><a href=""><img style="width: 30px;" src="../static/img/pdf-logo.png" alt=""></a></td>
+                        </tr>
+                    </tbody> -->
+                </table>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+</body>
+
+</html>

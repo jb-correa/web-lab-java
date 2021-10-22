@@ -1,0 +1,149 @@
+@import "../utils/vars";
+
+#home {
+    .home__container {
+        height: 90vh;
+        display: flex;
+        justify-content: center;
+
+        .home__info {
+            display: flex;
+            justify-content: center;
+            align-content: flex-start;
+            flex-direction: column;
+            color: $gris;
+
+            h2 {
+                max-width: 500px;
+                margin-bottom: 2rem;
+                font-size: 2.6em;
+                font-weight: 600;
+            }
+
+            p {
+                font-size: 1.2em;
+                margin-bottom: 1.5rem;
+            }
+
+            a {
+                font-size: 1.2em;
+            }
+        }
+    }
+    .home__img {
+        display: flex;
+        justify-content: center;
+        align-items: left;
+        flex-direction: column;
+    }
+}
+
+/****** EQUIPO ******/
+
+#equipo {
+    h2 {
+        padding: 3rem 0;
+        text-align: center;
+    }
+
+    .cards__container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        .equipo__card {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+            width: 17rem;
+            padding: 10px;
+            height: 380px;
+            margin-bottom: 2rem;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            border-radius: 0.8rem;
+
+            span {
+                font-size: 14px;
+            }
+
+            img {
+                width: 120px;
+                border-radius: 300px;
+            }
+        }
+    }
+}
+
+/******* CONTACTO ******/
+
+#contacto {
+    margin-top: 5rem;
+
+    h2 {
+        text-align: center;
+    }
+}
+
+/******* FOOTER *******/
+
+footer {
+    background-color: $azul;
+
+    h4 {
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+    }
+
+    hr {
+        color: white;
+        width: 80px;
+        margin-bottom: 2rem;
+    }
+
+    .redes {
+        padding: 0 1rem;
+        height: 65px;
+        width: 100%;
+        background-color: #2f89fc;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        color: white;
+
+        .icons {
+            margin-left: 1rem;
+            width: 80px;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    .info {
+        color: white;
+        margin-top: 2rem;
+        margin-bottom: 4rem;
+
+        .enlaces {
+            display: flex;
+            flex-direction: column;
+            a {
+                text-decoration: none;
+                color: white;
+                margin-bottom: 0.8rem;
+                font-size: 1.1rem;
+            }
+        }
+    }
+
+    .copyright {
+        color: white;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 70px;
+        background-color: #0f0038;
+    }
+}

@@ -1,0 +1,50 @@
+.form-control,
+.form-select {
+    &:hover {
+        box-shadow: none;
+    }
+    &:focus {
+        box-shadow: none;
+        outline: none;
+        border: none;
+        background-color: $gris-claro;
+    }
+}
+
+.form-control {
+    height: 50px;
+    background-size: 30px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: $gris-claro;
+}
+
+.form-control--cargaUs {
+    background: url("../../img/lupa.png") no-repeat scroll 7px 7px;
+    background-position: 10px center;
+    background-color: $gris-claro;
+    padding-left: 60px;
+    background-size: 30px;
+}
+
+/* Change the white to any color ;) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px $gris-claro inset !important;
+}
+
+@-webkit-keyframes autofill {
+    0%,100% {
+        color: $gris-claro;
+        background: transparent;
+    }
+}
+input:-webkit-autofill {
+    -webkit-animation-delay: 1s; /* Safari support - any positive time runs instantly */
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
+

@@ -1,0 +1,101 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>WEB LAB | Cargar Admin</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"
+		defer></script>
+	<link rel="stylesheet" href="../static/style/css/style.css" th:href="@{/style/css/style.css}">
+</head>
+
+<!-- ///////////////////////// HEADER ////////////////////////////////////////////////-->
+
+<header>
+	<div th:insert="fragments/header-fr"></div>
+</header>
+
+<body>
+
+	<main>
+
+		<section class="py-5 text-center container">
+
+			<!-- ///////////////////////// BOOK-CARD LIST  ////////////////////////////////////////////////-->
+			<div class="album py-5 bg-light">
+				<br><br><br>
+				<div class="container">
+					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+						<div class="col" th:each="usuario : ${usuarios}">
+							<div class="card h-100 border-secondary mb-3">
+								<div class="control-carta">
+									<img class="image-card" th:if="${usuario.foto != null}"
+										th:src="${'/foto/profilepic/' + usuario.id}" style="width: 90%;">
+									<img class="image-card" th:if="${usuario.foto == null}"
+										src="../static/img/rostro.jpeg" style="width: 90%;">
+								</div>
+								<div class="card-body">
+
+									<h5 class="card-title" th:text="${usuario.nombre}">Nombre</h5>
+									<!--p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                card's content.</p-->
+
+									<ul class="list-group list-group-flush">
+										<p class="card-text">Nombre:</p>
+										<li class="list-group-item" th:text="${usuario.nombre}"></li>
+										<p class="card-text">Apellido:</p>
+										<li class="list-group-item" th:text="${usuario.apellido}"></li>
+										<p class="card-text">Titulo:</p>
+										<li class="list-group-item" th:text="${usuario.titulo}"></li>
+										<br><br><br><a th:href="@{/modificar-datos(id=__${usuario.id}__)}"
+											class="btn btn-dark"
+											style="font-size: small; border-radius: 8mm; margin-bottom: 0mm; margin-right: 0mm; margin-left: 0mm; outline-width: 5mm;">Editar
+											Usuario</a>
+									</ul>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<section class="py-5 text-center container">
+				<div class="row py-lg-5">
+					<div class="col-lg-6 col-md-8 mx-auto">
+						<a th:href="@{/}" class="btn btn-primary my-2">Volver</a>
+					</div>
+				</div>
+			</section>
+
+		</section>
+
+	</main>
+
+	<footer class="text-muted py-5">
+		<div class="container">
+			<p class="float-end mb-1">
+				<a href="#">Back to top</a>
+			</p>
+			<p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+			<p class="mb-0">
+				New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a
+					href="../getting-started/introduction/">getting
+					started guide</a>.
+			</p>
+		</div>
+	</footer>
+
+
+	<script src="js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>

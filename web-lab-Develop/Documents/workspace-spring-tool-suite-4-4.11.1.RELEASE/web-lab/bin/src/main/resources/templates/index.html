@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weblab | análisis clínicos</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"
+    defer></script>
+  <link rel="stylesheet" href="../static/style/css/style.css" th:href="@{style/css/style.css}">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#" th:href="@{/}"><img th:src="@{img/logo.png}" src="../static/img/logo.png"
+          alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{#equipo}" href="#equipo">Sobre nosotros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link boton boton--registro" href="./login.html" th:href="@{/login}">Iniciar Sesión</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home">
+    <div class="container home__container">
+      <div class="row row-cols-2">
+        <div class="col home__info pe-3">
+          <h2>Laboratorios Especializados para el cuidado de su salud</h2>
+          <p> Amplia Experiencia, Gran Variedad de Servicios Ofrecidos y Calidad Certificada</p>
+          <div>
+            <a href="./login.html" th:href="@{/login}" class="boton boton--registro">Iniciar sesión</a>
+            <a href="#contacto" class="boton boton--ingreso">Pedir turno</a>
+          </div>
+        </div>
+        <div class="col home__img ps-5">
+          <img th:src="@{img/portada.png}" src="../static/img/portada.png" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="equipo">
+    <div class="container equipo__container">
+      <h2>Equipo</h2>
+      <div class="cards__container">
+
+        <div th:each=" usuario : ${usuarios}" class="equipo__card">
+          <img th:if="${libro.foto != null}" src="../static/img/rostro.jpg" th:src="${'/foto/libro?isbn=' + libro.isbn}"
+            alt="">
+          <div class="mb-4">
+            <h4 th:text="${usuario.nombre + ' ' + usuario.apellido}">Fabrizio Gardini</h4>
+            <h6 th:text="${usuario.}">Bioquímico</h6>
+            <span th:text="${usuario.descripcion}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora,
+              itaque. Eius quasi provident neque omnis?</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <div class="row">
+      <div class="col">
+
+      </div>
+      <div class="col ratio ratio-4x3">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.9446625951587!2d-58.39553738445187!3d-34.63083868045248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccb232d430041%3A0xb914ae1d2c269fcc!2sHospital%20Garrahan!5e0!3m2!1ses-419!2sar!4v1631830485736!5m2!1ses-419!2sar"
+          style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+
+    <div class="redes">
+      <span>Seguinos en nuestras redes:</span>
+      <div class="icons">
+        <i class="bi bi-facebook"></i>
+        <i class="bi bi-twitter"></i>
+        <i class="bi bi-instagram"></i>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="info row g-5">
+        <div class="col">
+          <h4>Weblab</h4>
+          <hr>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam iusto eius harum, assumenda dolorem
+            deserunt!</p>
+        </div>
+        <div class="col">
+          <h4>Enlaces útiles</h4>
+          <hr>
+          <div class="enlaces">
+            <a href="home">Home</a>
+            <a href="equipo">Equipo</a>
+            <a href="contacto">Contacto</a>
+            <a th:href="@{/login}">Ingresar</a>
+          </div>
+        </div>
+        <div class="col">
+          <h4>Contacto</h4>
+          <hr>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam iusto eius harum, assumenda dolorem
+            deserunt!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <span>Todos los derechos reservados</span>
+    </div>
+
+  </footer>
+
+
+</body>
+
+</html>

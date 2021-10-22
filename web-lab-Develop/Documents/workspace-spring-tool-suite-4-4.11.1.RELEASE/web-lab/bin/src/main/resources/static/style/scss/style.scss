@@ -1,0 +1,27 @@
+/* base */
+@import "./base/global";
+@import "./base/typography";
+
+/* vars */
+@import "./utils/vars";
+
+/* pages */
+@import "./pages/home";
+@import "./pages/cargaUs";
+@import "./pages/inicio";
+@import "./pages/login";
+@import "./pages/cargaAdmin";
+@import "./pages/cargarResultados";
+@import "./pages/modificarAdmin";
+@import "./pages/modificarUser";
+
+/* layout */
+@import "./layout/sidebar";
+@import "./layout/navbar";
+@import "./layout/grid";
+
+
+/* components */
+@import "./components/buttons";
+@import "./components/inputs";
+

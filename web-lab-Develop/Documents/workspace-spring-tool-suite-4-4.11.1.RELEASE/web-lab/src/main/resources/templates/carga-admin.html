@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB LAB | Cargar Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"
+        defer></script>
+    <link rel="stylesheet" href="../static/style/css/style.css" th:href="@{/style/css/style.css}">
+</head>
+<body>
+    <section id="cargaAdmin" class="container grid" th:if="${#authorization.expression('hasRole(''ROLE_ADMIN'')')}">
+
+        <!-- ///////////////////////// NAV BAR  ////////////////////////////////////////////////-->
+        <header>
+            <div th:insert="fragments/navbar-fr"></div>
+        </header>
+
+        <div class="header">
+            <h2 class="titulo">Cargar <span>Nuevo Administrador</span></h2>
+        </div>
+
+        <div class="content">
+            <form th:action="@{/admin/carga-admin}" method="POST" enctype="multipart/form-data">
+                <div th:if="${error != null}" class="alert alert-danger" role="alert">
+                    <span th:text="${error}"></span>
+                </div>
+                <div class="row mb-3 g-5">
+                    <div class="col">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input name="nombre" type="fname" th:value="${nombre}" class="form-control" id="nombre"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <div class="col">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input name="apellido" type="lname" th:value="${apellido}" class="form-control" id="apellido">
+                    </div>
+                </div>
+                <div class="row mb-3 g-5">
+                    <div class="col">
+                        <label for="dni" class="form-label">Documento</label>
+                        <input name="dni" th:value="${dni}" type="number" class="form-control" id="dni">
+                    </div>
+                    <div class="col">
+                        <label for="fechaNac" class="form-label">Fecha de nacimiento</label>
+                        <input name="fechaNac" type="date" class="form-control" id="fechaNac">
+                    </div>
+                </div>
+                <div class="row mb-3 g-5">
+                    <div class="col">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input name="telefono" type="phone" th:value="${telefono}" class="form-control" id="telefono">
+                    </div>
+                    <div class="col">
+                        <label for="domicilio" class="form-label">Domicilio</label>
+                        <input name="domicilio" type="text" th:value="${domicilio}" class="form-control" id="domicilio">
+                    </div>
+                </div>
+                <div class="row mb-3 g-5">
+                    <div class="col">
+                        <label for="email" class="form-label">Correo</label>
+                        <input name="email" type="email" th:value="${email}" class="form-control" id="email">
+                    </div>
+                    <div class="col">
+                        <label for="localidad" class="form-label">Localidad</label>
+                        <input name="localidad" type="text" th:value="${localidad}" class="form-control" id="localidad">
+                    </div>
+                </div>
+                <div class="row mb-3 g-5">
+                    <div class="col">
+                        <label for="titulo" class="form-label">Título</label>
+                        <input name="titulo" type="text" th:value="${titulo}" class="form-control" id="titulo">
+                    </div>
+                    <div class="col">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea name="descripcion" type="text" th:value="${descripcion}" class="form-control"
+                            id="descripcion"></textarea>
+                    </div>
+                </div>
+                <div class="row mb-3 g-5">
+                    <div class="col">
+                        <label for="foto" class="form-label">Foto de perfil</label>
+                        <input class="form-control form-control-lg" name="archivo" id="foto" type="file">
+                    </div>
+                    <div class="col">
+                        <label for="clave" class="form-label">Clave</label>
+                        <input name="clave" type="password" class="form-control" id="clave">
+                    </div>
+                </div>
+                <button type="submit" class="boton mt-3 boton--aceptar">Cargar</button>
+            </form>
+        </div>
+    </section>
+    </div>
+</body>
+</html>

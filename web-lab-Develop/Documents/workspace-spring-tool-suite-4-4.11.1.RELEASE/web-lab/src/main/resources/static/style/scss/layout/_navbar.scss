@@ -1,0 +1,19 @@
+@import "../utils/vars";
+
+.navbar {
+    padding-top: 2rem;
+    font-size: 1.15rem;
+    li {
+        padding: 0 1rem;
+    }
+    .nav-link {
+        color: $gris;
+    }
+    .navbar-brand img {
+        width: 200px;
+    }
+}
+
+.navbar--user {
+
+}

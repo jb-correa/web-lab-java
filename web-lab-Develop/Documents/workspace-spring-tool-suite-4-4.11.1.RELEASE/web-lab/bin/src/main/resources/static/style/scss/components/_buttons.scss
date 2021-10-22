@@ -1,0 +1,24 @@
+@import "../utils/vars";
+
+.boton {
+    width: 160px;
+    text-decoration: none;
+    padding: 0.5rem 2rem;
+    border: none;
+    text-align: center;
+    color: $blanco !important;
+    border-radius: 7px;
+    background-color: $celeste;
+}
+
+.boton--registro {
+    margin-right: 1rem;
+}
+
+.boton--ingreso {
+    background-color: $verde;
+}
+
+.boton--aceptar {
+    width: 250px;
+}
